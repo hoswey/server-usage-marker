@@ -59,6 +59,10 @@ Template.Usages_List.events({
                     Usages.update({_id: usage._id}, {$set: {username: Meteor.user().username}});
                 }
             } else {
+
+                if (usage.username == null) {
+                    return;
+                }
                 if (usage.username == Meteor.user().username) {
                     Usages.update({_id: usage._id}, {$unset: {username: ""}})
                 } else {
