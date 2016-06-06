@@ -1,0 +1,25 @@
+<template name="Servers_List">
+    <div class="container">
+        <p>服务器列表</p>
+        <div class="row">
+            <div class="col-md-2">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>IP</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each servers}}
+                        <tr>
+                            <td>{{ip}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+

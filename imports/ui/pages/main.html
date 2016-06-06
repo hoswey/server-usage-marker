@@ -1,0 +1,16 @@
+<head>
+    <title>simple</title>
+</head>
+
+<body>
+{{> loginButtons}}
+{{#if currentUser}}
+    {{> Main}}
+{{/if}}
+</body>
+
+<template name="Main">
+    {{> Usages_List }}
+    {{> Servers_List }}
+    {{> Apps_List }}
+</template>

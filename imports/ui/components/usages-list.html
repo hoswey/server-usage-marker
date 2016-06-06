@@ -1,0 +1,102 @@
+<template name="Usages_List">
+    <div class="modal fade" id="serverModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="serverIp" class="control-label">服务器IP:</label>
+                            <div class="dropdown" id="serverIp">
+                                <button class="btn btn-default dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <span id="selectedServerIp">
+                                        {{#each servers}}
+                                            {{#if $eq @index 0}}
+                                                {{ip}}
+                                            {{/if}}
+                                        {{/each}}
+                                    </span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    {{#each servers}}
+                                        <li><a href="#" class="server-ip">{{ip}}</a></li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="appName" class="control-label">进程名:</label>
+                            <div class="dropdown" id="appName">
+                                <button class="btn btn-default dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <span id="selectedAppName">
+                                        {{#each apps}}
+                                            {{#if $eq @index 0}}
+                                                {{appName}}
+                                            {{/if}}
+                                        {{/each}}
+                                    </span>
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    {{#each apps}}
+                                        <li><a href="#" class="app-name">{{appName}}</a></li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="serverConfirm">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <p>使用情况</p>
+        <button id="add" class="btn btn-primary" data-toggle="modal" data-target="#serverModal"> 添加</button>
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>服务器</th>
+                        <th>应用</th>
+                        <th>谁在使用</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each usages}}
+                        <tr>
+                            <td class="ip">{{ip}}</td>
+                            <td class="appName">{{appName}}</td>
+                            <td class="username">{{username}}</td>
+                            <td>
+                                <button id="use" type="button" class="btn btn-default">使用</button>
+                                <button id="cancel" type="button" class="btn btn-default">取消</button>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="editable">
+    <div id="textArea" class="editable" data-type="text" data-placeholder="Enter text"
+         data-emptytext="填入您的名字" data-rows="4">{{username}}
+    </div>
+</template>
+
+
+
