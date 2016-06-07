@@ -75,7 +75,12 @@
                     </thead>
                     <tbody>
                     {{#each usages}}
-                        <tr>
+                        <tr class=
+                            {{#if $exists username}}
+                            warning
+                            {{/if}}
+
+                        >
                             <td class="ip">{{ip}}</td>
                             <td class="appName">{{appName}}</td>
                             <td class="username">{{username}}</td>
